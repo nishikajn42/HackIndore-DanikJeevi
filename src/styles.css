@@ -142,6 +142,11 @@ h2 { font-size: clamp(45px, 5.8vw, 78px); }
 .login-overlay { background: rgba(15,23,42,.6); backdrop-filter: blur(4px); }
 .login-modal { color: #0f172a; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 25px 55px rgba(2,6,23,.3); }
 .dark .login-modal { color: #fff; background: #0f172a; border-color: #1e293b; }
+.brand-logo { display: block; width: auto; object-fit: contain; }
+.navbar-logo { height: 32px; }
+.footer-logo { height: 32px; }
+.modal-logo { height: 38px; margin-bottom: 18px; }
+@media (min-width: 768px) { .navbar-logo { height: 36px; } .footer-logo { height: 40px; } }
 .login-tabs { display: flex; width: 100%; gap: 4px; margin: 16px 0; padding: 4px; border: 1px solid rgba(203,213,225,.5); border-radius: 12px; background: rgba(226,232,240,.7); }
 .dark .login-tabs { border-color: rgba(51,65,85,.5); background: #1e293b; }
 .login-tabs button { display: flex; align-items: center; justify-content: center; flex: 1; gap: 6px; padding: 10px 16px; border-radius: 8px; font-size: 14px; transition: all .2s; }
