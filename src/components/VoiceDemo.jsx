@@ -1,0 +1,10 @@
+import { Check, Mic, RotateCcw, Sparkles } from 'lucide-react'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+
+export default function VoiceDemo() {
+  const [listening, setListening] = useState(false)
+  const [done, setDone] = useState(false)
+  const runDemo = () => { setListening(true); setDone(false); window.setTimeout(() => { setListening(false); setDone(true) }, 1400) }
+  return <motion.div className="voice-card" id="demo" initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .15, duration: .6 }}><div className="voice-top"><div><span className="eyebrow">Live voice match</span><h3>Say what work you need.</h3></div><span className="live-pill"><i /> Live demo</span></div><div className={`voice-input ${listening ? 'is-listening' : ''}`}><div className="waveform" aria-hidden="true">{Array.from({ length: 30 }, (_, i) => <motion.span key={i} animate={listening ? { height: [8, 18 + (i % 5) * 6, 10] } : { height: 8 + (i % 5) * 4 }} transition={{ duration: .65, repeat: listening ? Infinity : 0, delay: i * .02 }} />)}</div><p>{listening ? 'Listening in Hindi + English...' : '“Mujhe 3 painter chahiye Vijay Nagar mein”'}</p></div><button className={`record-button ${listening ? 'recording' : ''}`} onClick={runDemo} disabled={listening} aria-label="Run voice demo"><span className="mic-ring">{done ? <RotateCcw size={20} /> : <Mic size={20} />}</span></button>{done && <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="parse-result"><div className="parse-header"><span><Sparkles size={14} /> We understood</span><Check size={16} /></div><div className="parse-grid"><div><small>Role</small><strong>Painter</strong></div><div><small>People</small><strong>03</strong></div><div><small>Area</small><strong>Vijay Nagar</strong></div><div><small>Pay / day</small><strong>₹650–800</strong></div></div><button className="result-action">Show 12 nearby matches <span>→</span></button></motion.div>}<div className="voice-footer"><span>Tap to speak</span><span>Hindi · English · Marathi</span></div></motion.div>
+}
